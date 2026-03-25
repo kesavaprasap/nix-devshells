@@ -10,6 +10,7 @@
 
   # Additional modules beyond minimal
   additionalModules = [
+    modules.tools.editors # Neovim with LSP + plugins
     modules.mcp.codanna # Code intelligence
     modules.mcp.serena # Project analysis
     modules.mcp.shrimp # Task management

@@ -72,7 +72,7 @@ in {
   ];
 
   shellHook = ''
-    echo "🦀 Rust toolchain ready!"
+    echo " Rust toolchain ready!"
     echo "   cargo --version: $(cargo --version)"
     echo "   rustc --version: $(rustc --version)"
     echo ""
@@ -80,7 +80,7 @@ in {
     # RustRover setup: Start RustRover from this shell (oktola's approach)
     # Configure toolchain in Settings → Rust, pointing to rust-toolchain in PATH
     # For stdlib sources, use the same path but remove /bin suffix
-    echo "📍 Rust toolchain location: ${rustToolchain}"
+    echo " Rust toolchain location: ${rustToolchain}"
 
     # Generate .cargo/config.toml for RustRover (which doesn't inherit all env vars)
     # Only generate if it doesn't exist to avoid overwriting user customizations
@@ -89,24 +89,24 @@ in {
     export RUSTC_WRAPPER=sccache
     export SCCACHE_DIR="$HOME/.cache/sccache"
     mkdir -p "$SCCACHE_DIR"
-    echo "⚡ sccache enabled at $SCCACHE_DIR"
+    echo " sccache enabled at $SCCACHE_DIR"
 
     # Add Nix cache optimization
     export NIX_CONFIG="extra-substituters = https://cache.nixos.org https://nix-community.cachix.org"
 
     # cargo-mcp status
-    echo "🔌 MCP tools ready:"
+    echo " MCP tools ready:"
     echo "   ✅ cargo-mcp: $(cargo-mcp --version)"
     echo "      Built with nightly Rust for unstable feature support"
 
     echo ""
-    echo "💡 Quick commands:"
+    echo " Quick commands:"
     echo "   cargo new <project>     # Create new Rust project"
     echo "   cargo check             # Check code for errors"
     echo "   cargo test              # Run tests"
     echo "   cargo run               # Build and run"
     echo ""
-    echo "🔧 Optimization tools:"
+    echo " Optimization tools:"
     echo "   cargo flamegraph        # Generate CPU flamegraphs"
     echo "   cargo machete           # Find unused dependencies"
     echo "   cargo bloat             # Analyze binary size"
@@ -114,11 +114,11 @@ in {
     echo "   tokei                   # Count lines of code (from base tools)"
     echo "   sccache --show-stats    # Show compilation cache stats"
     echo ""
-    echo "🔧 Analysis tools:"
+    echo " Analysis tools:"
     echo "   cargo deps              # Create dependency graphs"
     echo "   cargo modules           # Analyze binary size"
     echo ""
-    echo "🔌 MCP tools:"
+    echo " MCP tools:"
     echo "   cargo-mcp               # MCP server for Cargo operations"
     echo "   cratedocs               # Rust documentation MCP server"
     echo "   mcp-server-puppeteer    # Browser automation MCP server"

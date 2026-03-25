@@ -13,10 +13,10 @@ rustPlatform.buildRustPackage rec {
     owner = "promptexecution";
     repo = "cratedocs-mcp";
     rev = "main";
-    hash = "sha256-U79pgp2WCgrzOcQzx9rDsqmGXKIA+I26qW5jYGuZcyA="; # Nix will provide the correct hash in error message
+    hash = "sha256-dbHL6NYrbngXViYl3q4gRQvlOR2OBZvT/GLttK/fxVk="; # Nix will provide the correct hash in error message
   };
 
-  cargoHash = "sha256-4n09BgpjacRNNSUCNMAL2obK7/YAgX9WZuTBtBl9R7U="; # Nix will provide the correct hash in error message
+  cargoHash = "sha256-m39S9KmPiFqYSyUqc1IJujiWLx3DQJSTjxPiUSfbplI="; # Nix will provide the correct hash in error message
 
   # Optimize build for faster compilation
   doCheck = false; # Skip tests to speed up build

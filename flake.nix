@@ -6,6 +6,10 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     serena = {
       # pin to last-working commit, there is no release with a flake.nix yet
       url = "github:oraios/serena?ref=eb54e834b6da7a5e11f51c27afbcf55be92ae066";
@@ -39,6 +43,7 @@
     nixpkgs-unstable,
     flake-utils,
     rust-overlay,
+    nixvim,
     serena,
     codanna,
     pyproject-nix,
@@ -88,7 +93,7 @@
         libSystem = import ./lib/default.nix {
           inherit pkgs system;
           inputs = {
-            inherit nixpkgs nixpkgs-unstable rust-overlay serena codanna;
+            inherit nixpkgs nixpkgs-unstable rust-overlay serena codanna nixvim;
             inherit pyproject-nix uv2nix pyproject-build-systems;
           };
         };
@@ -114,6 +119,11 @@
           web-dev = libSystem.composeShell {
             languages = ["rust" "python" "php"];
             mcps = ["cargo-mcp" "serena" "puppeteer"];
+            tools = "standard";
+          };
+          kesava-dev = libSystem.composeShell {
+            languages = ["rust" "python" "cpp"];
+            mcps = ["cargo-mcp" "serena" "codanna"];
             tools = "standard";
           };
         };

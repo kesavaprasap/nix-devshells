@@ -72,7 +72,7 @@
   ];
 
   shellHook = ''
-    echo "🚀 C++ development environment ready!"
+    echo " C++ development environment ready!"
     echo "   gcc --version: $(gcc --version | head -n1)"
     echo "   clang --version: $(clang --version | head -n1)"
     echo "   cmake --version: $(cmake --version | head -n1)"
@@ -83,35 +83,35 @@
     export CXX="ccache g++"
     export CCACHE_DIR="$HOME/.cache/ccache"
     mkdir -p "$CCACHE_DIR"
-    echo "⚡ ccache enabled at $CCACHE_DIR"
+    echo " ccache enabled at $CCACHE_DIR"
     echo "   Use 'ccache -s' to see statistics"
     echo ""
 
     # Configure for better debugging
     export CXXFLAGS="-g -O0 -fno-omit-frame-pointer"
     export CFLAGS="-g -O0 -fno-omit-frame-pointer"
-    echo "🐛 Debug symbols enabled by default (override with your own CXXFLAGS)"
+    echo " Debug symbols enabled by default (override with your own CXXFLAGS)"
     echo ""
 
-    echo "🔧 Available compilers:"
+    echo " Available compilers:"
     echo "   ✅ gcc ${pkgs.gcc14.version} (default via ccache)"
     echo "   ✅ clang ${pkgs.clang_18.version}"
     echo "   Switch with: export CC=clang CXX=clang++"
     echo ""
 
-    echo "🏗️  Build systems:"
+    echo " Build systems:"
     echo "   ✅ cmake ${pkgs.cmake.version}"
     echo "   ✅ ninja ${pkgs.ninja.version}"
     echo "   ✅ meson ${pkgs.meson.version}"
     echo "   ✅ make ${pkgs.gnumake.version}"
     echo ""
 
-    echo "📦 Package managers:"
+    echo " Package managers:"
     echo "   ✅ conan $(conan --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' || echo "2.x")"
     echo "   ✅ vcpkg (use: vcpkg search/install)"
     echo ""
 
-    echo "🔍 Development tools:"
+    echo " Development tools:"
     echo "   ✅ clangd: LSP server for IDE integration"
     echo "   ✅ clang-format: Code formatter"
     echo "   ✅ clang-tidy: Static analyzer"
@@ -119,7 +119,7 @@
     echo "   ✅ include-what-you-use: Header optimization"
     echo ""
 
-    echo "🐛 Debugging & Profiling:"
+    echo " Debugging & Profiling:"
     echo "   ✅ gdb: GNU debugger"
     echo "   ✅ lldb: LLVM debugger"
     echo "   ✅ valgrind: Memory analysis"
@@ -127,7 +127,7 @@
     echo "   ✅ hotspot: Performance analysis GUI"
     echo ""
 
-    echo "💡 Quick commands:"
+    echo " Quick commands:"
     echo "   cmake -B build -G Ninja    # Configure with Ninja"
     echo "   cmake --build build        # Build project"
     echo "   ctest --test-dir build     # Run tests"
@@ -138,7 +138,7 @@
     echo "   ccache -s                  # Show cache statistics"
     echo ""
 
-    echo "🚄 Performance tips:"
+    echo " Performance tips:"
     echo "   - Use 'mold' linker: -fuse-ld=mold"
     echo "   - Use 'lld' linker: -fuse-ld=lld"
     echo "   - Enable LTO: -flto"

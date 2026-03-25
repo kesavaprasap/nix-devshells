@@ -3,12 +3,23 @@
     "codanna": {
       "type": "stdio",
       "command": "codanna",
-      "args": ["serve", "--watch", "--watch-interval", "5"]
+      "args": [
+        "serve",
+        "--watch",
+        "--watch-interval",
+        "5"
+      ]
     },
     "serena": {
       "type": "stdio",
       "command": "serena",
-      "args": ["start-mcp-server", "--transport", "stdio", "--project", "."],
+      "args": [
+        "start-mcp-server",
+        "--transport",
+        "stdio",
+        "--project",
+        "."
+      ],
       "env": {}
     },
     "claude-task-master": {
@@ -18,6 +29,11 @@
       "env": {
         "TASKMASTER_DIR": ".taskmaster"
       }
+    },
+    "cargo": {
+      "args": [],
+      "command": "cargo-mcp",
+      "type": "stdio"
     }
   }
 }

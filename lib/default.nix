@@ -78,7 +78,7 @@
       import ../modules/tools
       {
         pkgs = pkgs-with-rust;
-        inherit lib;
+        inherit lib inputs system;
       }
     else {};
 

@@ -19,6 +19,9 @@
     # UV - Modern, fast Python package and project manager
     pkgs.uv
 
+    # LSP server for neovim integration
+    pkgs.basedpyright
+
     # Development tools
     pkgs.ruff # Extremely fast Python linter and formatter (replaces black, isort, flake8, pylint)
     pkgs.mypy # Static type checker for Python
@@ -61,7 +64,7 @@
   ];
 
   shellHook = ''
-    echo "🐍 Python development environment ready!"
+    echo " Python development environment ready!"
     echo "   python --version: $(python --version 2>&1)"
     echo "   uv --version: uv $(uv --version | cut -d' ' -f2)"
     echo ""
@@ -82,7 +85,7 @@
     export LDFLAGS="-L${pkgs.zlib}/lib -L${pkgs.openssl.out}/lib"
     export PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig:${pkgs.zlib.dev}/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-    echo "⚡ UV package manager configured"
+    echo " UV package manager configured"
     echo "   Cache: $UV_CACHE_DIR"
     echo "   Python: ${pkgs.python312}/bin/python"
     echo ""
@@ -90,17 +93,17 @@
     # Check for virtual environment
     if [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
       if [ ! -d ".venv" ]; then
-        echo "📦 No virtual environment found. Create one with:"
+        echo " No virtual environment found. Create one with:"
         echo "   uv venv"
         echo ""
       else
-        echo "📦 Virtual environment detected at .venv"
+        echo " Virtual environment detected at .venv"
         echo "   Activate with: source .venv/bin/activate"
         echo ""
       fi
     fi
 
-    echo "🔧 Development tools:"
+    echo " Development tools:"
     echo "   ✅ ruff: Fast Python linter and formatter"
     echo "   ✅ mypy: Static type checker"
     echo "   ✅ pytest: Testing framework with coverage support"
@@ -108,7 +111,7 @@
     echo "   ✅ py-spy: Performance profiler"
     echo ""
 
-    echo "💡 Quick commands:"
+    echo " Quick commands:"
     echo "   uv init                    # Initialize new Python project"
     echo "   uv venv                    # Create virtual environment"
     echo "   source .venv/bin/activate  # Activate virtual environment"
@@ -118,13 +121,13 @@
     echo "   uv pip sync requirements.txt  # Sync exact dependencies"
     echo ""
 
-    echo "🧪 Testing:"
+    echo " Testing:"
     echo "   pytest                     # Run all tests"
     echo "   pytest -v --cov=.          # Run with coverage"
     echo "   pytest -n auto             # Run tests in parallel"
     echo ""
 
-    echo "🎨 Code quality:"
+    echo " Code quality:"
     echo "   ruff check .               # Lint code (replaces flake8, pylint, etc.)"
     echo "   ruff format .              # Format code (replaces black, isort)"
     echo "   mypy .                     # Type check code"
@@ -133,18 +136,18 @@
     echo "   pyupgrade --py312-plus     # Upgrade syntax to Python 3.12+"
     echo ""
 
-    echo "📊 Profiling:"
+    echo " Profiling:"
     echo "   py-spy record -o profile.svg -- python script.py  # CPU profiling"
     echo ""
 
-    echo "📚 Documentation:"
+    echo " Documentation:"
     echo "   mkdocs new .               # Create new docs project"
     echo "   mkdocs serve               # Serve docs locally"
     echo "   mkdocs build               # Build docs"
     echo "   pdoc --html --output-dir docs module  # Generate API docs"
     echo ""
 
-    echo "📦 Package management tips:"
+    echo " Package management tips:"
     echo "   - UV is 10-100x faster than pip"
     echo "   - Use 'uv pip compile' for reproducible dependencies"
     echo "   - UV caches packages globally for speed"
