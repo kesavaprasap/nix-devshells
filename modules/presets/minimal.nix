@@ -10,6 +10,7 @@
     modules.tools.version-control # git, git-lfs
     modules.tools.utilities # jq, curl, wget, tree, fd, ripgrep, etc.
     modules.tools.nix-tools # nixfmt, nil, alejandra, deadnix, statix
+    modules.tools.prompt # starship prompt with git integration
   ];
 
   # Flatten packages from all included modules

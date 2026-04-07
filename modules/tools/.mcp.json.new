@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "cargo": {
+      "args": [],
+      "command": "cargo-mcp",
+      "type": "stdio"
+    },
+    "codanna": {
+      "args": [
+        "serve",
+        "--watch",
+        "--watch-interval",
+        "5"
+      ],
+      "command": "codanna",
+      "type": "stdio"
+    },
+    "serena": {
+      "args": [
+        "start-mcp-server",
+        "--transport",
+        "stdio",
+        "--project",
+        "."
+      ],
+      "command": "serena",
+      "env": {},
+      "type": "stdio"
+    }
+  }
+}

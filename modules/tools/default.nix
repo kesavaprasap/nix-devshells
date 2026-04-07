@@ -9,4 +9,5 @@
   nix-tools = import ./nix-tools.nix {inherit pkgs lib;};
   editors = import ./editors.nix {inherit pkgs lib inputs system;};
   utilities = import ./utilities.nix {inherit pkgs lib;};
+  prompt = import ./prompt.nix {inherit pkgs lib;};
 }
