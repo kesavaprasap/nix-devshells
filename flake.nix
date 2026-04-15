@@ -86,7 +86,7 @@
         shells = import ./default.nix {
           inherit pkgs;
           _system = system;
-          inputs = {inherit nixpkgs nixpkgs-unstable rust-overlay serena codanna;};
+          inputs = {inherit nixpkgs nixpkgs-unstable rust-overlay serena codanna nixvim;};
         };
 
         # Import lib system for module composition
