@@ -86,7 +86,7 @@
       #   extraPackages = with pkgs; [
       #     # Add project-specific development tools
       #     nodejs # For frontend asset compilation
-      #     mysql80 # For local database
+      #     mysql84 # For local database
       #     redis # For caching
       #   ];
       #   extraShellHook = ''
@@ -112,7 +112,7 @@
       # OLD API with extension:
       # devShells.default = pkgs.mkShell {
       #   inputsFrom = [ devshells.devShells.${system}.php ];
-      #   packages = with pkgs; [ nodejs mysql80 ];
+      #   packages = with pkgs; [ nodejs mysql84 ];
       # };
 
       # Optional: Define apps for easy running

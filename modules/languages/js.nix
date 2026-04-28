@@ -16,29 +16,28 @@
     # Core Node.js runtime
     pkgs.nodejs_22
 
-    # Package managers
-    pkgs.nodePackages.npm # Node package manager
-    pkgs.nodePackages.pnpm # Fast, disk-efficient package manager
+    # Package managers (npm is bundled with nodejs_22)
+    pkgs.pnpm # Fast, disk-efficient package manager
 
     # Language server and tooling (Biome - modern Rust-based toolchain)
     pkgs.biome # LSP, formatter, and linter in one (replaces ESLint, Prettier partially)
 
     # Additional formatting (Prettier for full ecosystem support)
-    pkgs.nodePackages.prettier # Code formatter
+    pkgs.prettier # Code formatter
 
     # Type checking
-    pkgs.nodePackages.typescript # TypeScript compiler and type checker
-    pkgs.nodePackages.typescript-language-server # TypeScript language server (backup LSP)
+    pkgs.typescript # TypeScript compiler and type checker
+    pkgs.typescript-language-server # TypeScript language server (backup LSP)
 
     # Build and development tools
     pkgs.vite # Fast build tool and dev server (standalone package)
 
     # Code quality
-    pkgs.nodePackages.eslint # Linter (for projects using ESLint config)
+    pkgs.eslint # Linter (for projects using ESLint config)
 
     # Development utilities
-    pkgs.nodePackages.nodemon # Auto-restart on file changes
-    pkgs.nodePackages.npm-check-updates # Update dependencies
+    pkgs.nodemon # Auto-restart on file changes
+    pkgs.npm-check-updates # Update dependencies
 
     # System dependencies for native modules
     pkgs.stdenv.cc.cc.lib

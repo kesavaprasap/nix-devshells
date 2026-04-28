@@ -90,11 +90,10 @@ in {
     pkgs.phpstan # Static analysis tool
 
     # Development utilities
-    pkgs.nodejs # For frontend asset compilation
-    pkgs.nodePackages.npm # Package manager for JS dependencies
+    pkgs.nodejs # For frontend asset compilation (npm is bundled with nodejs)
 
     # Database tools
-    pkgs.mysql80 # MySQL client
+    pkgs.mysql84 # MySQL client
     pkgs.postgresql # PostgreSQL client
     pkgs.sqlite # SQLite client
 

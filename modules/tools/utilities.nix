@@ -20,8 +20,8 @@
     pkgs.tokei # Lines of code counter
     pkgs.pre-commit
     pkgs.nodejs
-    pkgs.nodePackages.prettier
-    pkgs.nodePackages.markdownlint-cli
+    pkgs.prettier
+    pkgs.markdownlint-cli
     pkgs.direnv
     pkgs.just
   ];

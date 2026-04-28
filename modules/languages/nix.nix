@@ -25,7 +25,7 @@
     pkgs.nix-diff # Compare derivations
 
     # Pre-commit hook tools
-    pkgs.nodePackages.prettier # Multi-language formatter
+    pkgs.prettier # Multi-language formatter
     pkgs.yamllint # YAML linting
     pkgs.typos # Spell checker
     pkgs.shellcheck # Shell script linter

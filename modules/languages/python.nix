@@ -59,7 +59,7 @@
     pkgs.openssl.dev
     pkgs.libffi
     pkgs.postgresql # For psycopg2 and similar
-    pkgs.mysql80 # For mysqlclient
+    pkgs.mysql84 # For mysqlclient
     pkgs.pkg-config
   ];
 
