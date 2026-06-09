@@ -139,7 +139,15 @@
         };
 
         # Expose custom packages
-        packages = {
+        packages = let
+          editors = import ./modules/tools/editors.nix {
+            inherit pkgs system;
+            lib = pkgs.lib;
+            inputs = {inherit nixvim;};
+          };
+          configuredNeovim = builtins.head editors.packages;
+        in {
+          neovim = configuredNeovim;
           cargo-mcp = pkgs-with-rust.callPackage ./pkgs/cargo-mcp.nix {
             inherit (pkgs-with-rust) rust-bin;
           };
