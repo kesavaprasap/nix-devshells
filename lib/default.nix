@@ -44,6 +44,7 @@
     puppeteer-mcp-server = pkgs.callPackage ../pkgs/puppeteer-mcp.nix {};
     universal-screenshot-mcp = pkgs.callPackage ../pkgs/universal-screenshot-mcp.nix {};
     computer-use-mcp = pkgs.callPackage ../pkgs/computer-use-mcp.nix {};
+    mcp-grafana = pkgs.callPackage ../pkgs/grafana-mcp.nix {};
     cratedocs-mcp = pkgs.callPackage ../pkgs/cratedocs-mcp.nix {};
     qdrant-mcp = pkgs.callPackage ../pkgs/qdrant-mcp.nix {
       inherit (inputs) pyproject-nix uv2nix pyproject-build-systems;
@@ -183,12 +184,20 @@
       # Placeholder
       generateSubtreeFlakeContent = _: throw "worktree.nix not yet implemented";
     };
+in let
+  syncScript = import ./sync.nix {
+    inherit pkgs lib modules system;
+    flakeSelf = null;
+  };
 in {
   # Public API exports
   inherit modules;
 
   # Composition functions
   inherit (compose) composeShell composeShellFromModules;
+  
+  # Sync script
+  inherit syncScript;
 
   # MCP configuration
   inherit (mcp) generateMcpConfig generateMcpConfigFiltered generateWorktreeMcpConfigs;

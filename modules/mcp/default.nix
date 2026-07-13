@@ -17,6 +17,8 @@
   qdrant = import ./qdrant.nix {inherit pkgs lib devPkgs;};
   paper-search = import ./paper-search.nix {inherit pkgs lib devPkgs;};
 
+  grafana = import ./grafana.nix {inherit pkgs lib devPkgs;};
+
   # Deprecated/legacy MCPs
   shrimp = import ./shrimp.nix {inherit pkgs lib devPkgs;};
 }

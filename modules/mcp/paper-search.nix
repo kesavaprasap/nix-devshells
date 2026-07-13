@@ -8,6 +8,10 @@
     name = "paper-search";
     description = "Academic paper search (arXiv, PubMed, bioRxiv, etc.)";
     category = "mcp";
+    secret = {
+      envVar = "SEMANTIC_SCHOLAR_API_KEY";
+      ageFile = "semantic-scholar-key.age";
+    };
   };
 
   packages = [devPkgs.paper-search-mcp];
@@ -17,9 +21,7 @@
       type = "stdio";
       command = "paper-search-mcp";
       args = [];
-      env = {
-        SEMANTIC_SCHOLAR_API_KEY = "";
-      };
+      env = {};
     };
   };
 

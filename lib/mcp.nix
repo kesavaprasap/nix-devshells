@@ -41,24 +41,22 @@
   };
 
   # Generate shellHook snippet for MCP config setup
-  # Includes smart merging to preserve user customizations
+  # Nix devshell is the source of truth — overwrites .mcp.json and syncs settings.local.json
   mcpConfigShellHook = mcpConfigFile: ''
-    # MCP configuration setup
-    if [ -f .mcp.json ]; then
-      # Merge with existing config (user customizations preserved)
-      if command -v ${pkgs.jq}/bin/jq &> /dev/null; then
-        ${pkgs.jq}/bin/jq -s '.[0] * .[1]' .mcp.json ${mcpConfigFile} > .mcp.json.new 2>/dev/null || {
-          echo "Warning: Failed to merge .mcp.json, keeping existing file"
-          rm -f .mcp.json.new
-        }
-        [ -f .mcp.json.new ] && mv .mcp.json.new .mcp.json && echo "✓ Updated .mcp.json with devshell MCP servers"
-      else
-        echo "Note: jq not available, keeping existing .mcp.json"
-      fi
+    # .mcp.json — always written from Nix (source of truth)
+    cp ${mcpConfigFile} .mcp.json
+    echo "  ✓ .mcp.json ($(${pkgs.jq}/bin/jq -r '.mcpServers | keys | join(", ")' ${mcpConfigFile}))"
+
+    # .claude/settings.local.json — sync enabledMcpjsonServers
+    _mcp_keys=$(${pkgs.jq}/bin/jq -c '.mcpServers | keys' ${mcpConfigFile})
+    mkdir -p .claude
+    if [ -f .claude/settings.local.json ]; then
+      ${pkgs.jq}/bin/jq --argjson k "$_mcp_keys" '.enabledMcpjsonServers = $k' \
+        .claude/settings.local.json > .claude/.settings.local.tmp \
+        && mv .claude/.settings.local.tmp .claude/settings.local.json
     else
-      # Create new config file
-      cp ${mcpConfigFile} .mcp.json
-      echo "✓ Generated .mcp.json with MCP servers: $(${pkgs.jq}/bin/jq -r '.mcpServers | keys | join(", ")' ${mcpConfigFile})"
+      printf '{"enabledMcpjsonServers":%s}\n' "$_mcp_keys" > .claude/settings.local.json
     fi
+    echo "  ✓ .claude/settings.local.json (enabledMcpjsonServers synced)"
   '';
 }

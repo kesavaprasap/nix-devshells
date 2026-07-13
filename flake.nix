@@ -158,6 +158,7 @@
           puppeteer-mcp-server = pkgs.callPackage ./pkgs/puppeteer-mcp.nix {};
           universal-screenshot-mcp = pkgs.callPackage ./pkgs/universal-screenshot-mcp.nix {};
           computer-use-mcp = pkgs.callPackage ./pkgs/computer-use-mcp.nix {};
+          mcp-grafana = pkgs.callPackage ./pkgs/grafana-mcp.nix {};
 
           # Qdrant MCP - MCP server for semantic documentation search
           qdrant-mcp = pkgs.callPackage ./pkgs/qdrant-mcp.nix {
@@ -179,6 +180,10 @@
           default = pkgs-with-rust.callPackage ./pkgs/cargo-mcp.nix {
             inherit (pkgs-with-rust) rust-bin;
           };
+        };
+        apps.sync-mcps = {
+          type = "app";
+          program = "${libSystem.syncScript}";
         };
       }
     )
@@ -219,6 +224,7 @@
         puppeteer-mcp-server = final.callPackage ./pkgs/puppeteer-mcp.nix {};
         universal-screenshot-mcp = final.callPackage ./pkgs/universal-screenshot-mcp.nix {};
         computer-use-mcp = final.callPackage ./pkgs/computer-use-mcp.nix {};
+        mcp-grafana = final.callPackage ./pkgs/grafana-mcp.nix {};
         qdrant-mcp = final.callPackage ./pkgs/qdrant-mcp.nix {
           inherit pyproject-nix uv2nix pyproject-build-systems;
         };

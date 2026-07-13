@@ -19,5 +19,7 @@
 
   computer-use-mcp = pkgs.callPackage ./computer-use-mcp.nix {};
 
+  mcp-grafana = pkgs.callPackage ./grafana-mcp.nix {};
+
   claude-task-master = pkgs.callPackage ./claude-task-master {};
 }

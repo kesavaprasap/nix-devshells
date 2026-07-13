@@ -8,6 +8,7 @@
     name = "shrimp";
     description = "AI-powered task management system";
     category = "mcp";
+    disabled = true;
   };
 
   packages = [devPkgs.mcp-shrimp-task-manager];

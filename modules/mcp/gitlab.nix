@@ -8,6 +8,10 @@
     name = "gitlab";
     description = "GitLab API integration";
     category = "mcp";
+    secret = {
+      envVar = "GITLAB_PERSONAL_ACCESS_TOKEN";
+      ageFile = "gitlab-token.age";
+    };
   };
 
   packages = [devPkgs.mcp-gitlab];
@@ -18,8 +22,7 @@
       command = "mcp-gitlab";
       args = [];
       env = {
-        GITLAB_PERSONAL_ACCESS_TOKEN = "";
-        GITLAB_API_URL = "https://gitlab.com/api/v4";
+        GITLAB_API_URL = "https://gitlab.licuspace.de/api/v4";
       };
     };
   };

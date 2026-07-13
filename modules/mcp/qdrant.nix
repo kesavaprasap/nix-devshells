@@ -8,6 +8,7 @@
     name = "qdrant-mcp";
     description = "Semantic documentation search using Qdrant with local CPU embeddings";
     category = "mcp";
+    disabled = true;
   };
 
   packages = [devPkgs.qdrant-mcp];
