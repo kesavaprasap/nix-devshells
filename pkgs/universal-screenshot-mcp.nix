@@ -39,7 +39,7 @@
     '';
 
     outputHashMode = "recursive";
-    outputHash = "sha256-p8I8gxg2tkpN+qaolSR3rMuKIe67hRlqwdJO4eRMHfs=";
+    outputHash = "sha256-mtezMBf+iHiWjp7zYsTW1Rh105Pj2TttinN+DaeNAeg=";
   };
 in
   stdenv.mkDerivation {

@@ -20,8 +20,8 @@
   python = pkgs.python3;
 
   # Create base Python package set
-  pythonBase = pyproject-nix.build.packages {
-    inherit pkgs python;
+  pythonBase = pkgs.callPackage pyproject-nix.build.packages {
+    inherit python;
   };
 
   # Create overlay from uv.lock
