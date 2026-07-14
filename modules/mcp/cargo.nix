@@ -17,7 +17,7 @@
     cargo = {
       type = "stdio";
       command = "cargo-mcp";
-      args = [];
+      args = ["serve"];
     };
   };
 

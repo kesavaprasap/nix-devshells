@@ -17,7 +17,7 @@
     cratedocs = {
       type = "stdio";
       command = "cratedocs";
-      args = [];
+      args = ["stdio"];
     };
   };
 
