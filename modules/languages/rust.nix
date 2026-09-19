@@ -11,7 +11,7 @@ let
   # Use rust-overlay to create unified toolchain for RustRover
   # pkgs already has rust-overlay applied from default.nix
   # Specify Rust version 1.90.0
-  rustToolchain = pkgs.rust-bin.stable."1.90.0".default.override {
+  rustToolchain = pkgs.rust-bin.stable."1.96.1".default.override {
     extensions = ["rust-src" "rust-analyzer" "clippy" "rustfmt"];
   };
 in {
